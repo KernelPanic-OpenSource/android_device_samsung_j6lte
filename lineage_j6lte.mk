@@ -15,7 +15,7 @@
 #
 
 # Inherit from those products. Most specific first.
-# $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 # $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
@@ -23,10 +23,14 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, device/samsung/j6lte/device.mk)
 
 # Inherit some common Halium stuff.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/halium.mk)
+# $(call inherit-product, $(SRC_TARGET_DIR)/product/halium.mk)
+$(call inherit-product, vendor/halium/config/halium.mk)
 
 # Inherit some common Lineage stuff.
 # $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+
+# Inherit fonts
+$(call inherit-product-if-exists, frameworks/base/data/fonts/fonts.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := j6lte
